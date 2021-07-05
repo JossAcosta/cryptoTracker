@@ -4,6 +4,8 @@ import CoinsItem from '../coins/CoinsItem';
 import FavoritesEmptyState from './FavoritesEmptyState';
 import Colors from '../../res/colors';
 
+import Storage from '../../libs/storage';
+
 class FavoritesScreen extends Component {
 
     state = {
@@ -34,7 +36,7 @@ class FavoritesScreen extends Component {
     }
     
     componentDidMount(){
-        this.getFavorites();
+        this.props.navigation.addListener("focus", this.getFavorites);
     }
 
     componentWillUnmount(){
@@ -43,7 +45,7 @@ class FavoritesScreen extends Component {
 
     render() {
 
-        const { favorite } = this.favorites;
+        const { favorites } = this.state;
 
         return (
             <View  style={styles.container}>
