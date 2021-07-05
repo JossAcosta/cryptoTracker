@@ -14,13 +14,13 @@ class FavoritesScreen extends Component {
 
     getFavorites = async () => {
         try {
-            const allKeys = Storage.instance.getAllKeys();
+            const allKeys = await Storage.instance.getAllKeys();
 
             const keys = allKeys.filter((key)=> key.includes("favorite-"));
             
             const favs = await Storage.instance.multiGet(keys);
             
-            const favorites = favs.map(fav => Json.parse(fav[1]));
+            const favorites = favs.map(fav => JSON.parse(fav[1]));
 
             this.setState({ favorites });
         
@@ -32,7 +32,7 @@ class FavoritesScreen extends Component {
     }
 
     handlePress = (coin) => {
-        this.props.navigation.navigate("CoinDetai", {coin});
+        this.props.navigation.navigate("CoinDetail", {coin});
     }
     
     componentDidMount(){
