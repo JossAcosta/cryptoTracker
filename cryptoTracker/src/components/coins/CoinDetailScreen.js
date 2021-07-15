@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: Colors.charade,
-      justifyContent:"space-between"
+      // justifyContent:"space-between"
     },
     row: {
       flexDirection: "row"

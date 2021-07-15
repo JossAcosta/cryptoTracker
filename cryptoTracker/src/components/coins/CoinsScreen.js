@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         padding: 0,
-        backgroundColor: 'blue',
+        backgroundColor: 'yellow',
         borderRadius: 8,
         margin: 16
     },

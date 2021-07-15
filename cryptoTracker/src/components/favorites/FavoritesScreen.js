@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { ScrollView, FlatList, StyleSheet, Text, View, } from 'react-native';
+import Chart from '../charts/Chart';
 import CoinsItem from '../coins/CoinsItem';
 import FavoritesEmptyState from './FavoritesEmptyState';
 import Colors from '../../res/colors';
@@ -57,12 +58,22 @@ class FavoritesScreen extends Component {
 
                 {
                     favorites.length > 0 ?
-                    <FlatList 
-                        data={favorites}
-                        renderItem= {({item}) =>
-                            <CoinsItem item={item} onPress={()=> this.handlePress(item)}/>
-                        }
-                    />
+                    <View  style={styles.container}>
+                        <FlatList 
+                            data={favorites}
+                            renderItem= {({item}) =>
+                                <CoinsItem item={item} onPress={()=> this.handlePress(item)}/>
+                            }
+                        />
+                        <ScrollView >
+                           <View style={styles.chartContainer}>
+                                <Text style={styles.chartTitle}>Social Media Stats</Text>
+                                 <View style={{ paddingLeft:24}}>
+                                    <Chart favorites={this.state.favorites}/>
+                                </View>
+                            </View>
+                        </ScrollView>
+                    </View>
                     : null
                 }
             </View>
@@ -74,6 +85,18 @@ const styles = StyleSheet.create({
       backgroundColor: Colors.charade,
       flex: 1,
     },
+    chartContainer:{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingBottom:16,
+    },
+    chartTitle:{
+        color: Colors.white,
+        fontWeight: 'bold',
+        fontSize:20,
+        
+      }
   });
 
 export default FavoritesScreen;

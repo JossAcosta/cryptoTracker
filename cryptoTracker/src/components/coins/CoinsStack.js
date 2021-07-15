@@ -19,7 +19,7 @@ const CoinsStack = () => {
         >
             <Stack.Screen name="Coins" component={CoinsScreen} />
             <Stack.Screen name="CoinDetail" component={CoinDetailScreen}/>
-        </Stack.Navigator>
+    </Stack.Navigator> 
     )
 }
 
